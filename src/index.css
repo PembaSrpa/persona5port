@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Archivo+Black&family=Special+Elite&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Persona 5 inspired design system. All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Iconic Persona 5 red */
+    --primary: 0 95% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 95% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 95% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 12%;
+    --input: 0 0% 14%;
+    --ring: 0 95% 48%;
+
+    --radius: 0.25rem;
+
+    /* P5 specific tokens */
+    --p5-red: 0 95% 48%;
+    --p5-red-deep: 0 90% 38%;
+    --p5-black: 0 0% 4%;
+    --p5-ink: 0 0% 8%;
+    --p5-bone: 40 25% 92%;
+    --p5-yellow: 48 100% 56%;
+
+    --gradient-rage: linear-gradient(135deg, hsl(0 95% 48%) 0%, hsl(0 80% 30%) 60%, hsl(0 0% 4%) 100%);
+    --gradient-radial-red: radial-gradient(circle at center, hsl(0 95% 48%) 0%, hsl(0 90% 30%) 40%, hsl(0 0% 4%) 100%);
+
+    --shadow-slash: 8px 8px 0 hsl(0 0% 4%);
+    --shadow-slash-red: 6px 6px 0 hsl(0 95% 48%);
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 95% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 95% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply bg-background text-foreground;
+    font-family: 'Oswald', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: hsl(var(--p5-black));
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Archivo Black', 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+  .font-heist { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.06em; }
+  .font-stencil { font-family: 'Special Elite', 'Courier New', monospace; }
+
+  .text-stroke {
+    -webkit-text-stroke: 2px hsl(var(--p5-black));
+    text-shadow: 4px 4px 0 hsl(var(--p5-black));
+  }
+
+  .text-stroke-white {
+    -webkit-text-stroke: 2px hsl(var(--p5-bone));
+  }
+
+  .halftone {
+    background-image: radial-gradient(hsl(var(--p5-black) / 0.85) 1.5px, transparent 1.6px);
+    background-size: 8px 8px;
+  }
+
+  .halftone-red {
+    background-image: radial-gradient(hsl(var(--p5-red) / 0.7) 1.5px, transparent 1.6px);
+    background-size: 8px 8px;
+  }
+
+  .halftone-dense {
+    background-image: radial-gradient(hsl(var(--p5-black)) 2px, transparent 2.1px);
+    background-size: 6px 6px;
+  }
+
+  .skew-card {
+    transform: skewX(-8deg);
+  }
+  .unskew {
+    transform: skewX(8deg);
+  }
+
+  .clip-jagged {
+    clip-path: polygon(0 6%, 8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+  }
+
+  .clip-slash {
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 92% 100%, 0 100%);
+  }
+
+  .clip-shard {
+    clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+  }
+
+  .clip-tag {
+    clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+  }
+
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 3px,
+      hsl(0 0% 0% / 0.25) 3px,
+      hsl(0 0% 0% / 0.25) 4px
+    );
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  .ink-edge {
+    box-shadow:
+      inset 0 0 0 2px hsl(var(--p5-black)),
+      8px 8px 0 hsl(var(--p5-black));
+  }
+
+  .pulse-red {
+    animation: pulse-red 1.6s ease-in-out infinite;
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.97); }
+  }
+
+  .shake {
+    animation: shake 0.45s cubic-bezier(.36,.07,.19,.97) both;
+  }
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+  }
+
+  .slash-in {
+    animation: slash-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes slash-in {
+    0% { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
+    100% { transform: translateX(0) skewX(-8deg); opacity: 1; }
+  }
+
+  .bg-rage { background: var(--gradient-rage); }
+  .bg-radial-red { background: var(--gradient-radial-red); }
+}
