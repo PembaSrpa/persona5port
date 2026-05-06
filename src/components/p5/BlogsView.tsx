@@ -34,7 +34,7 @@ export const BlogsView = ({ onBack }: Props) => {
   const handlePortal = (url: string) => {
     sfxSlash();
     sfxConfirm();
-    setTimeout(() => window.open(url, "_blank", "noopener,noreferrer"), 400);
+    setTimeout(() => window.open(url, "_self", "noopener,noreferrer"), 400);
   };
 
   return (
