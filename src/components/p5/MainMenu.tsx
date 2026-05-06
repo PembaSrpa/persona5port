@@ -2,17 +2,17 @@ import { useState } from "react";
 import { sfxConfirm, sfxHover, sfxSlash } from "@/lib/sfx";
 import jokerSilhouette from "@/assets/joker-silhouette.png";
 
-export type MenuKey = "profile" | "palaces" | "blogs" | "contact";
+export type MenuKey = "profile" | "palaces" | "portals" | "contact";
 
 interface Props {
   onSelect: (k: MenuKey) => void;
 }
 
 const items: { key: MenuKey; label: string; sub: string; icon: string }[] = [
-  { key: "profile", label: "CONFIDANT", sub: "About Pemba", icon: "✦" },
-  { key: "palaces", label: "PALACES", sub: "Infiltrate the projects", icon: "♛" },
-  { key: "blogs", label: "MEMENTOS", sub: "Thoughts & tutorials", icon: "✎" },
-  { key: "contact", label: "CALLING CARD", sub: "Send a message", icon: "✉" },
+  { key: "profile",  label: "CONFIDANT",    sub: "About Pemba",              icon: "✦" },
+  { key: "palaces",  label: "PALACES",       sub: "Infiltrate the projects",  icon: "♛" },
+  { key: "portals",  label: "PORTALS",       sub: "Other worlds",             icon: "⛩" },
+  { key: "contact",  label: "CALLING CARD",  sub: "Send a message",           icon: "✉" },
 ];
 
 export const MainMenu = ({ onSelect }: Props) => {
